@@ -1,4 +1,5 @@
 import 'package:aplicacion_ventas/screens/product_list_screen.dart';
+import 'package:aplicacion_ventas/screens/user_data.dart';
 import 'package:aplicacion_ventas/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget{
       theme: ThemeData(
         primaryColor: Colors.white,
       ),
-    home: ProductListAM(),
+    home: UserDataScreen(),
     );
   }
 }
