@@ -112,15 +112,20 @@ class ProductListAM extends StatelessWidget {
                                 SizedBox(width: 10),
                                 Row(
                                   children: [
-                                    InkWell(onTap: (){
-                                      Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+                                    InkWell(
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    LoginScreen()));
                                       },
-                                      child:ContainerIconButtonModel(
-                                      icon: CupertinoIcons.settings,
-                                      iconColor: Colors.grey,
-                                      iconSize: 20,
-                                      containerWidth: 50,
-                                    ),
+                                      child: ContainerIconButtonModel(
+                                        icon: CupertinoIcons.settings,
+                                        iconColor: Colors.grey,
+                                        iconSize: 20,
+                                        containerWidth: 50,
+                                      ),
                                     ),
                                     SizedBox(width: 5),
                                     DeleteProductPopUp(),

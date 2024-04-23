@@ -1,10 +1,12 @@
 import 'package:aplicacion_ventas/widgets/confirmation_purchase_popup.dart';
 import 'package:aplicacion_ventas/widgets/container_button_motel.dart';
+import 'package:aplicacion_ventas/widgets/remove_product_cart_popup.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class CartScreen extends StatelessWidget {
+import '../widgets/container_icon_button_model.dart';
 
+class CartScreen extends StatelessWidget {
   List imagesList = [
     "images/image2.jpg",
     "images/image2.jpg",
@@ -42,21 +44,20 @@ class CartScreen extends StatelessWidget {
               Container(
                 child: ListView.builder(
                     itemCount: imagesList.length,
-                  shrinkWrap: true,
-                  scrollDirection: Axis.vertical,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index){
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    physics: NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) {
                       return Container(
                         margin: EdgeInsets.symmetric(vertical: 15),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Checkbox(
-                              splashRadius: 20,
+                                splashRadius: 20,
                                 activeColor: Colors.pink,
                                 value: true,
-                                onChanged: (val){ }
-                            ),
+                                onChanged: (val) {}),
                             ClipRRect(
                               borderRadius: BorderRadius.circular(10),
                               child: Image.asset(
@@ -81,9 +82,9 @@ class CartScreen extends StatelessWidget {
                                 SizedBox(height: 10),
                                 Text(
                                   "Lorem ipsum dolor",
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 16,
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 16,
                                   ),
                                 ),
                                 SizedBox(height: 10),
@@ -100,8 +101,13 @@ class CartScreen extends StatelessWidget {
                             SizedBox(width: 10),
                             Row(
                               children: [
-                                Icon(CupertinoIcons.minus,
-                                color: Colors.red),
+                                IconButton(
+                                  icon: Icon(CupertinoIcons.minus),
+                                  color: Colors.red,
+                                  onPressed: () {
+
+                                  },
+                                ),
                                 SizedBox(width: 5),
                                 Text(
                                   "1",
@@ -111,17 +117,19 @@ class CartScreen extends StatelessWidget {
                                   ),
                                 ),
                                 SizedBox(width: 5),
-                                Icon(
-                                  CupertinoIcons.plus,
+                                IconButton(
+                                  icon: Icon(CupertinoIcons.plus),
                                   color: Colors.green,
+                                  onPressed: () {
+
+                                  },
                                 ),
                               ],
                             ),
                           ],
                         ),
                       );
-                  }
-                ),
+                    }),
               ),
               SizedBox(height: 30),
               Row(
@@ -136,9 +144,9 @@ class CartScreen extends StatelessWidget {
                   ),
                   Checkbox(
                     splashRadius: 20,
-                      activeColor: Colors.pink,
-                      value: false,
-                      onChanged: (val) { },
+                    activeColor: Colors.pink,
+                    value: false,
+                    onChanged: (val) {},
                   ),
                 ],
               ),
@@ -168,14 +176,13 @@ class CartScreen extends StatelessWidget {
                 ],
               ),
               SizedBox(height: 20),
-
             ],
           ),
         ),
       ),
-    bottomNavigationBar: Container(
-    padding: EdgeInsets.symmetric(horizontal: 10),
-    child: ConfirmationPurchasePopUp(),
+      bottomNavigationBar: Container(
+        padding: EdgeInsets.symmetric(horizontal: 10),
+        child: RemoveProductCartPopUp(),
       ),
     );
   }

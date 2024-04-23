@@ -1,3 +1,4 @@
+import 'package:aplicacion_ventas/Presentation/Screens/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:aplicacion_ventas/screens/cart_screen.dart';
 import 'package:aplicacion_ventas/screens/login_screen.dart';
@@ -172,7 +173,7 @@ class _SignupScreenState extends State<SignupScreen> {
                             // Luego, puedes navegar a la siguiente pantalla
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => CartScreen()),
+                              MaterialPageRoute(builder: (context) => principalCliente()),
                             );
                           }
                         },
