@@ -53,11 +53,6 @@ class CartScreen extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Checkbox(
-                                splashRadius: 20,
-                                activeColor: Colors.pink,
-                                value: true,
-                                onChanged: (val) {}),
                             ClipRRect(
                               borderRadius: BorderRadius.circular(10),
                               child: Image.asset(
@@ -132,24 +127,6 @@ class CartScreen extends StatelessWidget {
                     }),
               ),
               SizedBox(height: 30),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Seleccionar todo",
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  Checkbox(
-                    splashRadius: 20,
-                    activeColor: Colors.pink,
-                    value: false,
-                    onChanged: (val) {},
-                  ),
-                ],
-              ),
               Divider(
                 height: 20,
                 thickness: 1,
