@@ -5,7 +5,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/delete_product_popup.dart';
+import 'formularioProducto.dart';
 import 'login_screen.dart';
+import 'orders_list_screen.dart';
 
 class ProductListAM extends StatelessWidget {
   List imagesList = [
@@ -31,11 +33,59 @@ class ProductListAM extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Lista de productos"),
-        leading: BackButton(),
         backgroundColor: Colors.transparent,
         foregroundColor: Colors.black,
         elevation: 0,
         centerTitle: true,
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.pink,
+              ),
+              child: Text(
+                'Menú',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                ),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.shopping_bag),
+              title: Text('Lista de Productos'),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ProductListAM()));
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.add),
+              title: Text('Agregar Producto'),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => AgregarProducto()));
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.notifications),
+              title: Text('Notificaciones'),
+              onTap: () {
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.assignment),
+              title: Text('Pedidos'),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => OrderList()));
+              },
+            ),
+          ],
+        ),
       ),
       body: Column(
         children: [
@@ -118,7 +168,7 @@ class ProductListAM extends StatelessWidget {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    LoginScreen()));
+                                                    AgregarProducto()));
                                       },
                                       child: ContainerIconButtonModel(
                                         icon: CupertinoIcons.settings,
