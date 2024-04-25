@@ -1,4 +1,5 @@
 import 'package:aplicacion_ventas/screens/formularioProducto.dart';
+import 'package:aplicacion_ventas/screens/login_screen.dart';
 import 'package:aplicacion_ventas/screens/orders_list_screen.dart';
 import 'package:aplicacion_ventas/screens/product_list_screen.dart';
 import 'package:flutter/material.dart';
@@ -54,6 +55,14 @@ class AdminHomePage extends StatelessWidget {
               onTap: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => OrderList()));
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.no_accounts),
+              title: Text('Cerrar sesion'),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => LoginScreen()));
               },
             ),
           ],

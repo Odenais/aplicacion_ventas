@@ -1,6 +1,7 @@
 import 'package:aplicacion_ventas/screens/product_list_screen.dart';
 import 'package:flutter/material.dart';
 
+import 'login_screen.dart';
 import 'orders_list_screen.dart';
 
 class AgregarProducto extends StatefulWidget {
@@ -108,6 +109,14 @@ class _AgregarProductoState extends State<AgregarProducto> {
               onTap: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => OrderList()));
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.no_accounts),
+              title: Text('Cerrar sesion'),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => LoginScreen()));
               },
             ),
           ],

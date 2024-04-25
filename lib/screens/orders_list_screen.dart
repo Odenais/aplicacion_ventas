@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'formularioProducto.dart';
+import 'login_screen.dart';
 
 class OrderList extends StatelessWidget {
   List imagesList = [
@@ -77,6 +78,14 @@ class OrderList extends StatelessWidget {
               onTap: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => OrderList()));
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.no_accounts),
+              title: Text('Cerrar sesion'),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => LoginScreen()));
               },
             ),
           ],

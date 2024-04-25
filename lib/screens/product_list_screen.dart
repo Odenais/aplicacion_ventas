@@ -84,6 +84,14 @@ class ProductListAM extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => OrderList()));
               },
             ),
+            ListTile(
+              leading: Icon(Icons.no_accounts),
+              title: Text('Cerrar sesion'),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => LoginScreen()));
+              },
+            ),
           ],
         ),
       ),
