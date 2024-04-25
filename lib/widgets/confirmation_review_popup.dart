@@ -90,7 +90,7 @@ class ConfirmationReviewPopUp extends StatelessWidget {
       child:
       ContainerButtonModel(
         containerWidth: MediaQuery.of(context).size.width / 1.5,
-        itext: "Confirmar compra",
+        itext: "Confirmar reseña",
         bgColor: Colors.pink,
       ),
     );
