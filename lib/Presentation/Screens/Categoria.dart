@@ -6,51 +6,76 @@ import 'package:card_swiper/card_swiper.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'dart:typed_data';
 
+import 'main_screen.dart';
+
 
 
 class pantallaInicial extends StatelessWidget {
-  //pantallaInicial({required List listaProduc, required List listaImagenes, required List listaPrecios});
 
-  //final List<List<String>> matriz;
-
-  /*final List<String> imagenesCategorias;
-
-
-
-  final List<String> imagenesProductos;
-  final List<String> nombreProductos;
-  final List<String> preciosProductos;
-  final List<String> reviews;*/
-
-  /*
-  pantallaInicial({
-
-    required this.matriz,
-
-  });*/
-
-
-
-  String nombreCategoria = "Variado";
+  String nombreCategoria = "";
   pantallaInicial({required this.nombreCategoria});
 
-  List<String> imagenesCategorias = ["assets/productos/Camisa.jpg","assets/productos/Pantalon.jpg"
-    ,"assets/productos/Blusa.jpg","assets/productos/Falda.jpg",];
+  List<Producto> productos = [
+    Producto(
+      nombre: 'Producto A',
+      precio: '10.99',
+      imagenUrl: 'assets/productos/Pantalon.jpg',
+      review: 'Buena calidad',
+      descuento: '10%',
+      categoria: "Pantalon",
+    ),
+    Producto(
+      nombre: 'Producto B',
+      precio: '15.99',
+      imagenUrl: 'assets/productos/Pantalon.jpg',
+      review: 'Excelente servicio',
+      descuento: '15%',
+      categoria: "Pantalon",
+    ),
+    Producto(
+      nombre: 'Producto C',
+      precio: '20.99',
+      imagenUrl: 'assets/productos/Pantalon.jpg',
+      review: 'Recomendado',
+      descuento: '20%',
+      categoria: "Pantalon",
+    ),
+    Producto(
+      nombre: 'Producto D',
+      precio: '10.99',
+      imagenUrl: 'assets/productos/Pantalon.jpg',
+      review: 'Buena calidad',
+      descuento: '10%',
+      categoria: "Pantalon",
+    ),
+    Producto(
+      nombre: 'Producto E',
+      precio: '15.99',
+      imagenUrl: 'assets/productos/Pantalon.jpg',
+      review: 'Excelente servicio',
+      descuento: '15%',
+      categoria: "Pantalon",
+    ),
+    Producto(
+      nombre: 'Producto F',
+      precio: '20.99',
+      imagenUrl: 'assets/productos/Pantalon.jpg',
+      review: 'Recomendado',
+      descuento: '20%',
+      categoria: "Pantalon",
+    ),
+  ];
 
-  List<String> imagenesProductos = ["assets/productos/Pantalon.jpg","assets/productos/Pantalon.jpg"
-    ,"assets/productos/Pantalon.jpg","assets/productos/Pantalon.jpg","assets/productos/Pantalon.jpg"];
 
-  List nombreProductos = ["Camisa","Pantalon","Blusa","Falda","Camisa Azul"];
-
-  List preciosProductos = ["\$50.00 MXN","\$50.00 MXN","\$50.00 MXN","\$50.00 MXN","\$100.00 MXN"];
-
-  List reviews = ["54","54","54","54","100"];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: BackButton(),
+        leading: BackButton(
+
+          color: Colors.pink,
+        ),
         /*leading: PopupMenuButton<int>(
           itemBuilder: (context) => [
             PopupMenuItem(
@@ -99,27 +124,11 @@ class pantallaInicial extends StatelessWidget {
             }
           },
         ),*/
-        title: GestureDetector(
-          onTap: () {
-            print("dsadsa");
-            List<List<int>> matriz = [
-              [1, 2, 3],
-              [4, 5, 6],
-              [7, 8, 9]
-            ];
 
-            // Acceder a un elemento de la matriz
-            int elemento = matriz[1][2]; // Segunda fila, tercer elemento
-            print(elemento); // Salida: 6
-          },
-          child: Image.asset(
-            'assets/icons/logo1.jpg',
-            height: 30,
-          ),
-        ),
         actions: [
 
           IconButton(
+            color: Colors.pink,
             icon: Icon(Icons.search),
             onPressed: () {
               showSearch(context: context, delegate: CustomSearchDelegate());
@@ -127,6 +136,7 @@ class pantallaInicial extends StatelessWidget {
             },
           ),
           IconButton(
+            color: Colors.pink,
             icon: Icon(Icons.shopping_cart),
             onPressed: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) => CartScreen()));
@@ -135,6 +145,7 @@ class pantallaInicial extends StatelessWidget {
 
           IconButton(
 
+            color: Colors.pink,
             icon: Icon(Icons.account_circle),
             onPressed: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) => UserDataScreen()));
@@ -186,7 +197,7 @@ class pantallaInicial extends StatelessWidget {
 
 
                     child: GridView.builder(
-                        itemCount: nombreProductos.length,
+                        itemCount: productos.length,
                         shrinkWrap: true,
                         physics: NeverScrollableScrollPhysics(),
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -234,7 +245,7 @@ class pantallaInicial extends StatelessWidget {
                                               color: Color(0xFFF0F0F0),
                                               padding: EdgeInsets.all(5),
                                               child: Image.asset(
-                                                  imagenesProductos[index]),
+                                                  productos[index].imagenUrl),
                                             ),
 
                                           ),
@@ -265,7 +276,7 @@ class pantallaInicial extends StatelessWidget {
                                                 Row(
                                                   children: [
                                                     Text(
-                                                      nombreProductos[index],
+                                                      productos[index].nombre,
                                                       style: TextStyle(
                                                         color: Colors.white,
                                                         fontSize: 18,
@@ -287,7 +298,7 @@ class pantallaInicial extends StatelessWidget {
                                                         ),
                                                         SizedBox(width: 10,),*/
                                                     Text(
-                                                      preciosProductos[index],
+                                                      productos[index].precio,
                                                       style: TextStyle(
                                                         color: Colors.white,
                                                         fontSize: 10,
@@ -356,38 +367,7 @@ class pantallaInicial extends StatelessWidget {
     );
   }
 
-  Widget _categorias(){
-    return Container(
-      width: double.infinity,
-      height: 100.0,
 
-      child: Swiper(
-        viewportFraction: 0.3333,
-        scale: 0.9,
-        itemBuilder: (BuildContext context,int index){
-          return
-            GestureDetector(
-                onTap: (){
-                  print("aasd12");
-                },
-              child: Container(
-                color: Colors.green,
-                child: Column(
-                  children: [
-                    Image.asset(imagenesCategorias[index],fit: BoxFit.fitHeight,width: 100,height: 100,),
-
-                  ],
-                ),
-              ),
-            );
-          //return Image.asset(imagenesCategorias[index],fit: BoxFit.cover,);
-        },
-        itemCount: imagenesCategorias.length,
-        pagination: SwiperPagination(),
-        control: SwiperControl(),
-      ),
-    );
-  }
 }
 
 
@@ -434,14 +414,22 @@ class CustomSearchDelegate extends SearchDelegate<String> {
   }
 }
 
+
 class Producto {
   final String nombre;
   final String precio;
   final String imagenUrl;
+  final String review;
+  final String descuento;
+  final String categoria;
 
-  Producto({required this.nombre, required this.precio, required this.imagenUrl});
+  Producto(
+      {required this.nombre,
+        required this.precio,
+        required this.imagenUrl,
+        required this.review,
+        required this.descuento,
+        required this.categoria});
 }
-
-
 
 
