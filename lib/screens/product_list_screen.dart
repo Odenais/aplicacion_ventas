@@ -1,3 +1,4 @@
+import 'package:aplicacion_ventas/screens/formularioModificarProducto.dart';
 import 'package:aplicacion_ventas/widgets/confirmation_purchase_popup.dart';
 import 'package:aplicacion_ventas/widgets/container_button_motel.dart';
 import 'package:aplicacion_ventas/widgets/container_icon_button_model.dart';
@@ -176,7 +177,7 @@ class ProductListAM extends StatelessWidget {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    AgregarProducto()));
+                                                    ModificarProducto()));
                                       },
                                       child: ContainerIconButtonModel(
                                         icon: CupertinoIcons.settings,
