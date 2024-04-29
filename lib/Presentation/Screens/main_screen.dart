@@ -5,6 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
+import '../../screens/formularioProducto.dart';
+import '../../screens/login_screen.dart';
+import '../../screens/orders_list_screen.dart';
+import '../../screens/product_list_screen.dart';
 import 'Categoria.dart';
 
 class principalCliente extends StatelessWidget {
@@ -12,7 +16,24 @@ class principalCliente extends StatelessWidget {
   String categoriaSeleccionada = "";
 
   //Producto productos = Producto(nombre: "nombre", precio: "precio", imagenUrl: "imagenUrl", review: "review", descuento: "");
-
+  List<Categoria> categorias = [
+    Categoria(
+      nombre: 'Camisa',
+      imagenUrl: 'assets/productos/Camisa.jpg',
+    ),
+    Categoria(
+      nombre: 'Pantalon',
+      imagenUrl: 'assets/productos/Camisa.jpg',
+    ),
+    Categoria(
+      nombre: 'Camisa',
+      imagenUrl: 'assets/productos/Camisa.jpg',
+    ),
+    Categoria(
+      nombre: 'Pantalon',
+      imagenUrl: 'assets/productos/Camisa.jpg',
+    ),
+  ];
   List<Producto> productos = [
     Producto(
       nombre: 'Producto A',
@@ -38,67 +59,49 @@ class principalCliente extends StatelessWidget {
       descuento: '20%',
       categoria: "Pantalon",
     ),
+    Producto(
+      nombre: 'Producto D',
+      precio: '10.99',
+      imagenUrl: 'assets/productos/Pantalon.jpg',
+      review: 'Buena calidad',
+      descuento: '10%',
+      categoria: "Pantalon",
+    ),
+    Producto(
+      nombre: 'Producto E',
+      precio: '15.99',
+      imagenUrl: 'assets/productos/Pantalon.jpg',
+      review: 'Excelente servicio',
+      descuento: '15%',
+      categoria: "Pantalon",
+    ),
+    Producto(
+      nombre: 'Producto F',
+      precio: '20.99',
+      imagenUrl: 'assets/productos/Pantalon.jpg',
+      review: 'Recomendado',
+      descuento: '20%',
+      categoria: "Pantalon",
+    ),
   ];
-
-  //Producto producto = Producto(nombre: "nombre", precio: "precio", imagenUrl: "imagenUrl", review: "review");
-  //List<List<Producto>> matrizProductos = [producto];
   List<List<Producto>> matrizOfertas = [];
 
-  List<String> imagenesCategorias = [
-    "assets/productos/Camisa.jpg",
-    "assets/productos/Camisa.jpg",
-    "assets/productos/Camisa.jpg",
-    "assets/productos/Camisa.jpg",
-  ];
-
-  List<String> imagenesProductos = [
-    "assets/productos/Pantalon.jpg",
-    "assets/productos/Pantalon.jpg",
-    "assets/productos/Pantalon.jpg",
-    "assets/productos/Pantalon.jpg",
-    "assets/productos/Pantalon.jpg"
-  ];
-
-  List nombreProductos = [
-    "Camisa",
-    "Pantalon",
-    "Blusa",
-    "Falda",
-    "Camisa Azul"
-  ];
-
-  List preciosProductos = [
-    "\$50.00 MXN",
-    "\$50.00 MXN",
-    "\$50.00 MXN",
-    "\$50.00 MXN",
-    "\$100.00 MXN"
-  ];
-
-  List reviews = ["54", "54", "54", "54", "100"];
 
   void ingresarMatriz() {}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
 
-        //title: Text('Mi AppBar'),
-        leading: IconButton(
-          icon: Image.asset('assets/icons/logo1.jpg'),
-          onPressed: () {
-            // Acción cuando se presiona la imagen
-          },
-        ),
+      appBar: AppBar(
+
         actions: [
-          IconButton(
+          /*IconButton(
             icon: Icon(Icons.search),
             color: Colors.pink,
             onPressed: () {
               showSearch(context: context, delegate: CustomSearchDelegate());
             },
-          ),
+          ),*/
           IconButton(
             icon: Icon(Icons.shopping_cart),
             color: Colors.pink,
@@ -116,6 +119,45 @@ class principalCliente extends StatelessWidget {
             },
           ),
         ],
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.pink,
+              ),
+              child: Image.asset("assets/icons/logoInv.jpg"),
+            ),
+            ListTile(
+              leading: Icon(Icons.account_circle),
+              title: Text('Cuenta'),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => UserDataScreen()));
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.list_rounded),
+              title: Text('Lista de compras'),
+              onTap: () {
+                //Código para conectar pantalla de lista de compras
+                /*Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => AgregarProducto()));*/
+              },
+            ),
+
+            ListTile(
+              leading: Icon(Icons.no_accounts),
+              title: Text('Cerrar sesion'),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => LoginScreen()));
+              },
+            ),
+          ],
+        ),
       ),
       body: Container(
         color: Colors.white,
@@ -153,13 +195,26 @@ class principalCliente extends StatelessWidget {
                             ),
                           ],
                         ),
-                        ClipRRect(
+                        /*ClipRRect(
                           borderRadius: BorderRadius.circular(10),
                           child: Container(
                             color: Colors.white,
                             //color: Color(0xFFFFFFDE),
                             child: Container(
                               child: _categorias(),
+                            ),
+                          ),
+                        ),*/
+
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Container(
+                            color: Colors.white,
+                            //color: Color(0xFFFFFFDE),
+                            child: Container(
+
+                              child: _categorias(),
+
                             ),
                           ),
                         ),
@@ -427,9 +482,12 @@ class principalCliente extends StatelessWidget {
 
   Widget _categorias() {
     return Container(
+
       width: double.infinity,
       height: 110.0,
       child: Swiper(
+
+
         viewportFraction: 0.33,
         scale: 0.9,
         itemBuilder: (BuildContext context, int index) {
@@ -438,21 +496,26 @@ class principalCliente extends StatelessWidget {
               obtenerCategoriaSeleccionada(context, index);
             },
             child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(100),
-                color: Colors.red,
-              ),
-            ),
+              height: 100,
+              width: 100,
+              child: Image.asset(categorias[index].imagenUrl),
+            )
+            
             /*child: ClipOval(
                 child: Image.asset(imagenesCategorias[index],fit: BoxFit.cover,width: 50,height: 50,),
               )*/
           );
           //return Image.asset(imagenesCategorias[index],fit: BoxFit.cover,);
+
         },
-        itemCount: imagenesCategorias.length,
+        control: SwiperControl(
+          color: Colors.pink, // Color para los controles laterales
+        ),
+        itemCount: categorias.length,
         pagination: SwiperPagination(),
-        control: SwiperControl(),
+
       ),
+
     );
   }
 
@@ -588,4 +651,12 @@ class Producto {
       required this.review,
       required this.descuento,
       required this.categoria});
+}
+class Categoria {
+  final String nombre;
+  final String imagenUrl;
+
+  Categoria(
+      {required this.nombre,
+        required this.imagenUrl,});
 }
