@@ -57,7 +57,7 @@ class _PurchaseScreenState extends State<PurchaseScreen> {
             Row(
               children: [
                 Text(
-                  'Total Price: ',
+                  'Precio total: ',
                   style: TextStyle(fontSize: 16),
                 ),
                 Text('\$$totalPrice', style: TextStyle(fontSize: 16)),
